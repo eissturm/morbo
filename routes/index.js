@@ -30,6 +30,22 @@ router.post('/blanks', function(req, res, next) {
   });
 });
 
+router.param('blank', function(req, res, next, id) {
+  var query = Blank.findById(id);
+
+  query.exec(function(err, blank){
+    if (err) {return next(err);}
+    if (!blank) {return next(new Error("can't find blank"));}
+
+    req.blank = blank;
+    return next();
+  });
+});
+
+router.get('/blanks/:blank', function(req, res) {
+  res.json(req.blank);
+});
+
 var Fill = mongoose.model('Fill');
 router.get('/fills', function(req, res, next) {
   Fill.find(function(err, fills){

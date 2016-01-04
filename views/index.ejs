@@ -40,9 +40,8 @@
       </div>
       <hr />
       <div ng-repeat="blank in blanks">
-        {{blank.body}} - {{blank.author}} - Total Plays: {{blank.plays}}
+        {{blank.body}} - {{blank.author}} - Total Plays: {{blank.plays}} - ID: {{blank._id}}
       </div>
-      <div ng
       <div class="page-header">
         <h1>Fills</h1>
       </div><a href="#" ng-model="collapsed" ng-click="collapsed=!collapsed">Click here to <strong>Add a new Fill</strong></a>
@@ -59,6 +58,26 @@
       <hr />
       <div ng-repeat="fill in fills">
         {{fill.body}} - {{fill.author}} - Total Plays: {{fill.plays}}
+      </div>
+    </script>
+    <script type="text/ng-template" id="/blanks.html">
+      <div class="page-header">
+        <h1>Blanks</h1>
+      </div>
+      <a href="#" ng-model="collapsedFill" ng-click="collapsedFill=!collapsedFill">Click here to <strong>Add a new Blank</strong></a>
+
+      <div ng-show="collapsedFill">
+        <form ng-submit="addBlank()"
+        style="margin-top:30px;">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Enter a phrase..." ng-model="blankBody"></input>
+          </div>
+          <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+      </div>
+      <hr />
+      <div ng-repeat="blank in blanks">
+        {{blank.body}} - {{blank.author}} - Total Plays: {{blank.plays}} - ID: {{blank._id}}
       </div>
     </script>
   </body>

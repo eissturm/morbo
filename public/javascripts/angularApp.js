@@ -16,8 +16,18 @@ angular.module('morbo', ['ui.router'])
             return fills.getAll();
           }]
         }
-      });
-      $urlRouterProvider.otherwise('home');
+      })
+      .state('blanks', {
+        url: '/blanks/{id}',
+        templateUrl: '/blanks.html',
+        controller: 'BlankCtrl',
+        resolve: {
+          blank: ['$stateParams', 'blanks', function($stateParams, blanks) {
+            return blanks.get($stateParams.id);
+          }]
+      }
+    );
+  $urlRouterProvider.otherwise('home');
   }
 ])
 .controller('MainCtrl', [
@@ -47,9 +57,22 @@ angular.module('morbo', ['ui.router'])
     };
   }
 ])
+.controller('BlankCtrl', [
+  '$scope',
+  'blanks',
+  'blank',
+  function($scope, blanks, blank){
+    $scope.blank = blank;
+  }
+])
 .factory('blanks', ['$http', function($http){
   var o = {
     blanks: []
+  }
+  o.get = function(id) {
+    return $http.get('/blanks/' + id).then(function(res){
+      return res.data;
+    });
   }
   o.getAll = function() {
     return $http.get('/blanks').success(function(data){

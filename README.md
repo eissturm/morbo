@@ -18,6 +18,7 @@ Morbo is broken down into a few components.
 
 ## Game model
 
+```
 Game: {
   rounds: [
     {blank: 'Why did the _____ cross the road?', winning-fill: 'butt', winning-player: *player-id*, hands: [{player: 1, fills: ['butt', 'poop', 'fart', 'ballon', 'turtle'], played-fill: 'butt'}, {player: 2, fills: ['dingle','whiskey','boobies','fucked', 'spaghetti'], played-fill: 'boobies'}]},
@@ -28,3 +29,4 @@ Game: {
   endDatetime,
   winner: *player-id*
 }
+```

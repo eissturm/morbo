@@ -30,3 +30,12 @@ Game: {
   winner: *player-id*
 }
 ```
+
+## Blank model
+
+```
+blank: {
+  body: "Who loves _____?  I do I do I do, ooo.",
+  author: 'Andy',
+  plays: 0
+}

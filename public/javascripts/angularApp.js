@@ -18,15 +18,15 @@ angular.module('morbo', ['ui.router'])
         }
       })
       .state('blanks', {
-        url: '/blanks/{id}',
+        url: '/blanks',
         templateUrl: '/blanks.html',
         controller: 'BlankCtrl',
         resolve: {
-          blank: ['$stateParams', 'blanks', function($stateParams, blanks) {
+          blank: ['$stateParams', 'blanks', function($stateParams, blanks){
             return blanks.get($stateParams.id);
           }]
-      }
-    );
+        }
+      });
   $urlRouterProvider.otherwise('home');
   }
 ])
